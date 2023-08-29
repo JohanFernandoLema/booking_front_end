@@ -1,5 +1,9 @@
 import './featured.css'
+import axios from 'axios'
 
+// const hotels = async df
+
+// http://localhost:8000/api/hotels
 const Featured = () => {
   return (
     <div className="featured">
