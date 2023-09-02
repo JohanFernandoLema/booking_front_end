@@ -1,6 +1,11 @@
-import "./featuredProperties.css";
+import useFetch from '../../hooks/useFetch'
+import './featuredProperties.css'
 
 const FeaturedProperties = () => {
+  const { data, loading, error } = useFetch(
+    'http://localhost:8000/api/hotels/countByType'
+  )
+  console.log(data)
   return (
     <div className="fp">
       <div className="fpItem">
@@ -60,7 +65,7 @@ const FeaturedProperties = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedProperties;
+export default FeaturedProperties
