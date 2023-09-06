@@ -5,53 +5,53 @@ import {
   faPerson,
   faPlane,
   faTaxi,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./header.css";
-import { DateRange } from "react-date-range";
-import { useState } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './header.css'
+import { DateRange } from 'react-date-range'
+import { useState } from 'react'
+import 'react-date-range/dist/styles.css' // main css file
+import 'react-date-range/dist/theme/default.css' // theme css file
+import { format } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 
 const Header = ({ type }) => {
-  const [destination, setDestination] = useState("");
-  const [openDate, setOpenDate] = useState(false);
+  const [destination, setDestination] = useState('')
+  const [openDate, setOpenDate] = useState(false)
   const [date, setDate] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
-      key: "selection",
+      key: 'selection',
     },
-  ]);
-  const [openOptions, setOpenOptions] = useState(false);
+  ])
+  const [openOptions, setOpenOptions] = useState(false)
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
-  });
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
         ...prev,
-        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
-      };
-    });
-  };
+        [name]: operation === 'i' ? options[name] + 1 : options[name] - 1,
+      }
+    })
+  }
 
   const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
-  };
+    navigate('/hotels', { state: { destination, date, options } })
+  }
 
   return (
     <div className="header">
       <div
         className={
-          type === "list" ? "headerContainer listMode" : "headerContainer"
+          type === 'list' ? 'headerContainer listMode' : 'headerContainer'
         }
       >
         <div className="headerList">
@@ -76,7 +76,7 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </div>
         </div>
-        {type !== "list" && (
+        {type !== 'list' && (
           <>
             <h1 className="headerTitle">
               A lifetime of discounts? It's Genius.
@@ -101,9 +101,9 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setOpenDate(!openDate)}
                   className="headerSearchText"
-                >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+                >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
                   date[0].endDate,
-                  "MM/dd/yyyy"
+                  'MM/dd/yyyy'
                 )}`}</span>
                 {openDate && (
                   <DateRange
@@ -130,7 +130,7 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.adult <= 1}
                           className="optionCounterButton"
-                          onClick={() => handleOption("adult", "d")}
+                          onClick={() => handleOption('adult', 'd')}
                         >
                           -
                         </button>
@@ -139,7 +139,7 @@ const Header = ({ type }) => {
                         </span>
                         <button
                           className="optionCounterButton"
-                          onClick={() => handleOption("adult", "i")}
+                          onClick={() => handleOption('adult', 'i')}
                         >
                           +
                         </button>
@@ -151,7 +151,7 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.children <= 0}
                           className="optionCounterButton"
-                          onClick={() => handleOption("children", "d")}
+                          onClick={() => handleOption('children', 'd')}
                         >
                           -
                         </button>
@@ -160,7 +160,7 @@ const Header = ({ type }) => {
                         </span>
                         <button
                           className="optionCounterButton"
-                          onClick={() => handleOption("children", "i")}
+                          onClick={() => handleOption('children', 'i')}
                         >
                           +
                         </button>
@@ -172,7 +172,7 @@ const Header = ({ type }) => {
                         <button
                           disabled={options.room <= 1}
                           className="optionCounterButton"
-                          onClick={() => handleOption("room", "d")}
+                          onClick={() => handleOption('room', 'd')}
                         >
                           -
                         </button>
@@ -181,7 +181,7 @@ const Header = ({ type }) => {
                         </span>
                         <button
                           className="optionCounterButton"
-                          onClick={() => handleOption("room", "i")}
+                          onClick={() => handleOption('room', 'i')}
                         >
                           +
                         </button>
@@ -200,7 +200,7 @@ const Header = ({ type }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
